@@ -1,0 +1,21 @@
+FROM ubuntu:16.04
+
+MAINTAINER cyf
+
+COPY hosts /hosts
+
+RUN cd / \
+ && apt-get update \
+ && apt-get install -y git cmake openssl build-essential libssl-dev \
+ && cat /hosts >> /etc/hosts \
+ && git clone https://github.com/meyerd/n2n.git \
+ && cd /n2n/n2n_v2 \
+ && cmake . \
+ && make \
+ && make install \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/* /n2n /hosts
+
+EXPOSE 3636/udp 5645/udp
+
+CMD ["supernode","-l","3636","-f","-v"]
