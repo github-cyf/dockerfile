@@ -1,0 +1,10 @@
+MAILTO=""
+10 0 * * * /usr/bin/php /usr/share/nginx/html/apps/web/backend/PeriodExecution.php >>/var/log/cron/jobtiming_new.log 2>&1
+*/5 * * * * /usr/bin/php /usr/share/nginx/html/apps/web/backend/DepartmentUserRedis.php >>/var/log/cron/deptRedis.log 2>&1
+10 1 * * * /usr/bin/php /usr/share/nginx/html/apps/web/backend/PeriodExecutionFinance.php >>/var/log/cron/jobtiming_finance.log 2>&1
+0 1,3,5 * * * /usr/bin/php /usr/share/nginx/html/apps/web/backend/es/JobEs.php >>/var/log/cron/jobtiming_es.log 2>&1
+0 3 * * * /usr/bin/php /usr/share/nginx/html/apps/web/backend/es/ClientJobEs.php >>/var/log/cron/clientjobtiming_es.log 2>&1
+#* 0 * * * /usr/bin/php /usr/share/nginx/html/apps/web/backend/es/FollowJobEs.php >>/var/log/cron/jobtiming_es_follow.log
+#0 1 * * * /usr/bin/php /usr/share/nginx/html/apps/web/backend/es/QjHiddenCallEs.php >>/var/log/cron/jobtiming_es_hidecall.log 2>&1
+0 3 * * * /usr/bin/php /usr/share/nginx/html/apps/web/backend/UserOutAllTiming.php >>/var/log/cron/UserOutAllTiming.log 2>&1
+0 * * * * /usr/bin/php /usr/share/nginx/html/apps/web/backend/resourcepush/PeriodMqResourcePush.php >>/var/log/cron/PeriodMqResourcePush.log 2>&1
